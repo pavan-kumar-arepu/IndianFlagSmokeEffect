@@ -4,10 +4,8 @@
 //
 //  Created by Pavankumar Arepu on 12/07/24.
 //
-
-import Foundation
-import UIKit
 import SwiftUI
+import UIKit
 
 public struct ParticleImageGenerator {
     public static func generateParticleImage(size: CGSize) -> UIImage {
@@ -104,4 +102,3 @@ public class ShakeDetector: UIResponder, UIApplicationDelegate {
         }
     }
 }
-
