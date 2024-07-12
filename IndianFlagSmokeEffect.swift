@@ -4,6 +4,7 @@
 //
 //  Created by Pavankumar Arepu on 12/07/24.
 //
+
 import SwiftUI
 import UIKit
 
@@ -65,40 +66,34 @@ public struct IndianFlagSmokeView: UIViewRepresentable {
     }
 }
 
-public class ShakeDetector: UIResponder, UIApplicationDelegate {
-    private var window: UIWindow?
-    private var isShakeEnabled = false
-    private var smokeViews = [UIView]()
-    
-    public func enableShakeDetection(in window: UIWindow?) {
-        self.window = window
-        self.isShakeEnabled = true
-    }
-    
-    public override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        guard isShakeEnabled, motion == .motionShake else { return }
+public class SmokeModalViewController: UIViewController {
+    public override func viewDidLoad() {
+        super.viewDidLoad()
         
-        if let rootView = window?.rootViewController?.view {
-            let smokeView = UIView(frame: rootView.bounds)
-            smokeView.backgroundColor = .clear
-            
-            let saffronView = IndianFlagSmokeView(particleColor: .orange).makeUIView(context: .init())
-            let whiteView = IndianFlagSmokeView(particleColor: .white).makeUIView(context: .init())
-            let greenView = IndianFlagSmokeView(particleColor: .green).makeUIView(context: .init())
-            
-            smokeView.addSubview(saffronView)
-            smokeView.addSubview(whiteView)
-            smokeView.addSubview(greenView)
-            
-            rootView.addSubview(smokeView)
-            smokeViews.append(smokeView)
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                smokeView.removeFromSuperview()
-                if let index = self.smokeViews.firstIndex(of: smokeView) {
-                    self.smokeViews.remove(at: index)
-                }
-            }
+        view.backgroundColor = .clear
+        
+        let saffronView = IndianFlagSmokeView(particleColor: .orange).makeUIView(context: .init())
+        let whiteView = IndianFlagSmokeView(particleColor: .white).makeUIView(context: .init())
+        let greenView = IndianFlagSmokeView(particleColor: .green).makeUIView(context: .init())
+        
+        saffronView.frame = view.bounds
+        whiteView.frame = view.bounds
+        greenView.frame = view.bounds
+        
+        view.addSubview(saffronView)
+        view.addSubview(whiteView)
+        view.addSubview(greenView)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            self.dismiss(animated: true, completion: nil)
         }
+    }
+}
+
+public class SmokeEffectPresenter {
+    public static func presentSmokeEffect(from viewController: UIViewController) {
+        let smokeModalViewController = SmokeModalViewController()
+        smokeModalViewController.modalPresentationStyle = .overFullScreen
+        viewController.present(smokeModalViewController, animated: true, completion: nil)
     }
 }
