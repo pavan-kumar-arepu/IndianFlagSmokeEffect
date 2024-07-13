@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import UIKit
 
-struct RootViewControllerKey: EnvironmentKey {
+struct PackageRootViewControllerKey: EnvironmentKey {
     static var defaultValue: UIViewController? {
         return UIApplication.shared.windows.first?.rootViewController
     }
@@ -17,8 +17,8 @@ struct RootViewControllerKey: EnvironmentKey {
 
 extension EnvironmentValues {
     var rootViewController: UIViewController? {
-        get { self[RootViewControllerKey.self] }
-        set { self[RootViewControllerKey.self] = newValue }
+        get { self[PackageRootViewControllerKey.self] }
+        set { self[PackageRootViewControllerKey.self] = newValue }
     }
 }
 
