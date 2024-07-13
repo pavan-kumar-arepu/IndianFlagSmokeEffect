@@ -114,17 +114,17 @@ struct IndianFlagSmokeView_Previews: PreviewProvider {
             IndianFlagSmokeView(particleColor: .orange)
                 .previewDisplayName("Saffron Smoke")
                 .frame(width: 100, height: 400)
-                .background(Color.black)
+//                .background(Color.black)
             
             IndianFlagSmokeView(particleColor: .white)
                 .previewDisplayName("White Smoke")
                 .frame(width: 100, height: 400)
-                .background(Color.black)
+//                .background(Color.black)
             
             IndianFlagSmokeView(particleColor: .green)
                 .previewDisplayName("Green Smoke")
                 .frame(width: 100, height: 400)
-                .background(Color.black)
+//                .background(Color.black)
         }
     }
 }

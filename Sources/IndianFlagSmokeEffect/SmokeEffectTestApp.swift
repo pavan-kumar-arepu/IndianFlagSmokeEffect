@@ -43,6 +43,6 @@ struct TestContentView: View {
                 }
             }
         }
-        .background(RootViewControllerAccessor().hidden())
+        .background(PackageRootViewControllerAccessor().hidden())
     }
 }

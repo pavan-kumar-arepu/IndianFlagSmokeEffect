@@ -22,7 +22,7 @@ extension EnvironmentValues {
     }
 }
 
-public struct RootViewControllerAccessor: UIViewControllerRepresentable {
+public struct PackageRootViewControllerAccessor: UIViewControllerRepresentable {
     public init() {}
 
     public func makeUIViewController(context: Context) -> UIViewController {
