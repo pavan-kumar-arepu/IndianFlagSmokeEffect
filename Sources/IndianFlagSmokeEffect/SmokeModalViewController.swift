@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 import SwiftUI
 
-public class SmokeModalViewController: UIViewController {
-    public override func viewDidLoad() {
+class SmokeModalViewController: UIViewController {
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .clear
@@ -19,7 +19,7 @@ public class SmokeModalViewController: UIViewController {
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.alignment = .center
-        stackView.spacing = 10
+        stackView.spacing = 40
         
         let saffronHostingController = UIHostingController(rootView: IndianFlagSmokeView(particleColor: .orange))
         let whiteHostingController = UIHostingController(rootView: IndianFlagSmokeView(particleColor: .white))

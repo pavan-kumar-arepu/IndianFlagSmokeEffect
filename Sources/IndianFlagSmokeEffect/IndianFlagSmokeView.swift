@@ -9,14 +9,14 @@ import Foundation
 import SwiftUI
 import UIKit
 
-public struct IndianFlagSmokeView: UIViewRepresentable {
+struct IndianFlagSmokeView: UIViewRepresentable {
     var particleColor: UIColor
     
-    public init(particleColor: UIColor) {
+    init(particleColor: UIColor) {
         self.particleColor = particleColor
     }
     
-    public func makeUIView(context: Context) -> UIView {
+    func makeUIView(context: Context) -> UIView {
         let smokeView = UIView()
         
         let emitterLayer = CAEmitterLayer()
@@ -30,7 +30,7 @@ public struct IndianFlagSmokeView: UIViewRepresentable {
         return smokeView
     }
     
-    public func updateUIView(_ uiView: UIView, context: Context) {
+    func updateUIView(_ uiView: UIView, context: Context) {
         // Update code if needed
     }
     

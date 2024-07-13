@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 
-public class SmokeEffectPresenter {
-    public static func presentSmokeEffect(from viewController: UIViewController) {
+class SmokeEffectPresenter {
+    static func presentSmokeEffect(from viewController: UIViewController) {
         let smokeModalViewController = SmokeModalViewController()
         smokeModalViewController.modalPresentationStyle = .overFullScreen
         viewController.present(smokeModalViewController, animated: true, completion: nil)
