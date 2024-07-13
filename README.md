@@ -1,3 +1,118 @@
 # IndianFlagSmokeEffect
 
-A description of this package.
+`IndianFlagSmokeEffect` is a Swift package that provides a visual effect of smoke in the colors of the Indian flag. This effect can be used in iOS applications to create a unique visual experience.
+
+## Features
+
+- Generate smoke in saffron, white, and green colors.
+- Display the smoke effect in a modal view.
+- Easy integration with SwiftUI and UIKit.
+
+## Installation
+
+### Swift Package Manager
+
+You can add `IndianFlagSmokeEffect` to your project using Swift Package Manager. 
+
+1. In Xcode, select `File > Add Packages...`
+2. Enter the URL of the package repository: `https://github.com/your-username/IndianFlagSmokeEffect`
+3. Choose the version and add the package to your project.
+
+Alternatively, you can add the following dependency to your `Package.swift` file:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/your-username/IndianFlagSmokeEffect", from: "1.0.0")
+]
+
+Usage
+SwiftUI
+To use IndianFlagSmokeEffect in a SwiftUI view, follow these steps:
+
+
+import SwiftUI
+import IndianFlagSmokeEffect
+
+struct ContentView: View {
+    @Environment(\.rootViewController) private var rootViewController
+    
+    var body: some View {
+        ZStack {
+            Color.black.edgesIgnoringSafeArea(.all)
+            
+            VStack {
+                Text("Your App Content")
+                    .foregroundColor(.white)
+                    .padding()
+                
+                Button(action: {
+                    if let rootViewController = rootViewController {
+                        SmokeEffectPresenter.presentSmokeEffect(from: rootViewController)
+                    }
+                }) {
+                    Text("Show Smoke Effect")
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.blue)
+                        .cornerRadius(8)
+                }
+            }
+        }
+        .background(RootViewControllerAccessor().hidden())
+    }
+}
+
+UIKit
+To use IndianFlagSmokeEffect in a UIKit view controller, follow these steps:
+
+
+import UIKit
+import IndianFlagSmokeEffect
+
+class ViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let button = UIButton(type: .system)
+        button.setTitle("Show Smoke Effect", for: .normal)
+        button.addTarget(self, action: #selector(showSmokeEffect), for: .touchUpInside)
+        button.frame = CGRect(x: 100, y: 100, width: 200, height: 50)
+        view.addSubview(button)
+    }
+    
+    @objc func showSmokeEffect() {
+        SmokeEffectPresenter.presentSmokeEffect(from: self)
+    }
+}
+RootViewControllerAccessor
+To access the root view controller in SwiftUI, use the RootViewControllerAccessor provided by the package. This allows you to present the smoke effect modally from a SwiftUI view.
+
+import SwiftUI
+import UIKit
+
+public struct RootViewControllerKey: EnvironmentKey {
+    public static var defaultValue: UIViewController? {
+        return UIApplication.shared.windows.first?.rootViewController
+    }
+}
+
+public extension EnvironmentValues {
+    var rootViewController: UIViewController? {
+        get { self[RootViewControllerKey.self] }
+        set { self[RootViewControllerKey.self] = newValue }
+    }
+}
+
+public struct RootViewControllerAccessor: UIViewControllerRepresentable {
+    public init() {}
+
+    public func makeUIViewController(context: Context) -> UIViewController {
+        let viewController = UIViewController()
+        DispatchQueue.main.async {
+            viewController.viewDidAppear(false)
+        }
+        return viewController
+    }
+    
+    public func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
+}
