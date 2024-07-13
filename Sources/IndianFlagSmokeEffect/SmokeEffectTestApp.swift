@@ -10,7 +10,7 @@ import SwiftUI
 
 
 @available(iOS 14.0, *)
-@main
+//@main
 struct SmokeEffectTestApp: App {
     @available(iOS 14.0, *)
     var body: some Scene {
