@@ -20,7 +20,13 @@ let package = Package(
             name: "IndianFlagSmokeEffect",
             dependencies: [],
             path: "Sources/IndianFlagSmokeEffect",
-            publicHeadersPath: "include"
+            exclude: [
+                "ParticleImageGenerator.swift",
+                "IndianFlagSmokeView.swift",
+                "SmokeModalViewController.swift",
+                "SmokeEffectPresenter.swift",
+                "RootViewControllerAccessor.swift"
+            ], publicHeadersPath: "include"
         )
     ]
 )
