@@ -62,7 +62,7 @@ struct ContentView: View {
     }
 }
 
-UIKit
+## UIKit
 To use IndianFlagSmokeEffect in a UIKit view controller, follow these steps:
 
 
@@ -84,6 +84,7 @@ class ViewController: UIViewController {
         SmokeEffectPresenter.presentSmokeEffect(from: self)
     }
 }
+
 RootViewControllerAccessor
 To access the root view controller in SwiftUI, use the RootViewControllerAccessor provided by the package. This allows you to present the smoke effect modally from a SwiftUI view.
 
@@ -116,3 +117,10 @@ public struct RootViewControllerAccessor: UIViewControllerRepresentable {
     
     public func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 }
+
+## Example Project
+An example project is included in the package to demonstrate how to use the smoke effect in both SwiftUI and UIKit.
+
+## Contributing
+Contributions are welcome! Please open an issue or submit a pull request with your changes.
+
