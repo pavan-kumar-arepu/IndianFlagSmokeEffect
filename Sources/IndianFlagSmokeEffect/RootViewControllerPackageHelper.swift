@@ -16,7 +16,7 @@ struct PackageRootViewControllerKey: EnvironmentKey {
 }
 
 extension EnvironmentValues {
-    var rootViewController: UIViewController? {
+    var packageRootViewController: UIViewController? {
         get { self[PackageRootViewControllerKey.self] }
         set { self[PackageRootViewControllerKey.self] = newValue }
     }
