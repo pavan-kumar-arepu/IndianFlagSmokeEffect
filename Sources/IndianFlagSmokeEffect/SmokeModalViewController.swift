@@ -13,7 +13,7 @@ internal class SmokeModalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .clear
+        view.backgroundColor = .black
         
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -41,7 +41,7 @@ internal class SmokeModalViewController: UIViewController {
         view.addSubview(stackView)
         
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 70),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
             stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20)
@@ -51,7 +51,7 @@ internal class SmokeModalViewController: UIViewController {
         let closeButton = UIButton(type: .system)
         closeButton.setTitle("Close", for: .normal)
         closeButton.setTitleColor(.white, for: .normal)
-        closeButton.backgroundColor = .black.withAlphaComponent(0.5)
+        closeButton.backgroundColor = .green.withAlphaComponent(0.5)
         closeButton.layer.cornerRadius = 8
         closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
         closeButton.translatesAutoresizingMaskIntoConstraints = false
