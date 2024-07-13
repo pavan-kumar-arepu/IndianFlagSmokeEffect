@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 
-class ParticleImageGenerator {
-    static func generateParticleImage(size: CGSize) -> UIImage {
+internal struct ParticleImageGenerator {
+    internal static func generateParticleImage(size: CGSize) -> UIImage {
         let renderer = UIGraphicsImageRenderer(size: size)
         
         let image = renderer.image { context in

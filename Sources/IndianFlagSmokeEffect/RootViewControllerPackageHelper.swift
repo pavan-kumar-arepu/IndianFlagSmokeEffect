@@ -4,10 +4,7 @@
 //
 //  Created by Pavankumar Arepu on 13/07/24.
 //
-
-import Foundation
 import SwiftUI
-import UIKit
 
 struct PackageRootViewControllerKey: EnvironmentKey {
     static var defaultValue: UIViewController? {
@@ -21,7 +18,6 @@ extension EnvironmentValues {
         set { self[PackageRootViewControllerKey.self] = newValue }
     }
 }
-
 
 public struct PackageRootViewControllerAccessor: UIViewControllerRepresentable {
     public init() {}
