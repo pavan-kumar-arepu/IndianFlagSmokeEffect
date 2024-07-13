@@ -1,7 +1,7 @@
 
 import SwiftUI
 import UIKit
-
+/*
 public struct ParticleImageGenerator {
     public static func generateParticleImage(size: CGSize) -> UIImage {
         let renderer = UIGraphicsImageRenderer(size: size)
@@ -105,7 +105,7 @@ public class SmokeEffectPresenter {
     }
 }
 
-
+*/
 
 #if DEBUG
 struct IndianFlagSmokeView_Previews: PreviewProvider {
