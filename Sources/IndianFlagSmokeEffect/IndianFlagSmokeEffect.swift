@@ -66,17 +66,25 @@ public class SmokeModalViewController: UIViewController {
         
         view.backgroundColor = .clear
         
-        let saffronView = IndianFlagSmokeView(particleColor: .orange).makeUIView(context: .init())
-        let whiteView = IndianFlagSmokeView(particleColor: .white).makeUIView(context: .init())
-        let greenView = IndianFlagSmokeView(particleColor: .green).makeUIView(context: .init())
+        let saffronHostingController = UIHostingController(rootView: IndianFlagSmokeView(particleColor: .orange))
+        let whiteHostingController = UIHostingController(rootView: IndianFlagSmokeView(particleColor: .white))
+        let greenHostingController = UIHostingController(rootView: IndianFlagSmokeView(particleColor: .green))
         
-        saffronView.frame = view.bounds
-        whiteView.frame = view.bounds
-        greenView.frame = view.bounds
+        addChild(saffronHostingController)
+        addChild(whiteHostingController)
+        addChild(greenHostingController)
         
-        view.addSubview(saffronView)
-        view.addSubview(whiteView)
-        view.addSubview(greenView)
+        view.addSubview(saffronHostingController.view)
+        view.addSubview(whiteHostingController.view)
+        view.addSubview(greenHostingController.view)
+        
+        saffronHostingController.didMove(toParent: self)
+        whiteHostingController.didMove(toParent: self)
+        greenHostingController.didMove(toParent: self)
+        
+        saffronHostingController.view.frame = view.bounds
+        whiteHostingController.view.frame = view.bounds
+        greenHostingController.view.frame = view.bounds
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             self.dismiss(animated: true, completion: nil)
