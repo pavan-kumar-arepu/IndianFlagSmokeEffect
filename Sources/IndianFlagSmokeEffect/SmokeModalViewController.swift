@@ -37,11 +37,36 @@ internal class SmokeModalViewController: UIViewController {
         whiteHostingController.didMove(toParent: self)
         greenHostingController.didMove(toParent: self)
         
-        stackView.frame = view.bounds
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stackView)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            self.dismiss(animated: true, completion: nil)
-        }
+        NSLayoutConstraint.activate([
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20)
+        ])
+        
+        // Add Close Button
+        let closeButton = UIButton(type: .system)
+        closeButton.setTitle("Close", for: .normal)
+        closeButton.setTitleColor(.white, for: .normal)
+        closeButton.backgroundColor = .black.withAlphaComponent(0.5)
+        closeButton.layer.cornerRadius = 8
+        closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(closeButton)
+        
+        NSLayoutConstraint.activate([
+            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            closeButton.widthAnchor.constraint(equalToConstant: 60),
+            closeButton.heightAnchor.constraint(equalToConstant: 40)
+        ])
+    }
+    
+    @objc private func closeButtonTapped() {
+        self.dismiss(animated: true, completion: nil)
     }
 }
