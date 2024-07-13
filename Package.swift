@@ -30,29 +30,33 @@
 //    ]
 //)
 
-// swift-tools-version:5.3
+
 import PackageDescription
 
 let package = Package(
     name: "IndianFlagSmokeEffect",
     platforms: [
-        .iOS(.v13)
+        .iOS(.v14)
     ],
     products: [
         .library(
             name: "IndianFlagSmokeEffect",
             targets: ["IndianFlagSmokeEffect"]
-        ),
+        )
     ],
     targets: [
         .target(
             name: "IndianFlagSmokeEffect",
-            dependencies: []
-        ),
-        .testTarget(
-            name: "IndianFlagSmokeEffectTests",
-            dependencies: ["IndianFlagSmokeEffect"]
-        ),
+            dependencies: [],
+            path: "Sources",
+            exclude: [
+                "ParticleImageGenerator.swift",
+                "IndianFlagSmokeView.swift",
+                "SmokeModalViewController.swift",
+                "SmokeEffectPresenter.swift",
+                "RootViewControllerAccessor.swift"
+            ],
+            publicHeadersPath: "include"
+        )
     ]
 )
-
