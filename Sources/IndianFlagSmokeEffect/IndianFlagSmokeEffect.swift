@@ -27,7 +27,7 @@ public struct IndianFlagSmokeView: UIViewRepresentable {
         let smokeView = UIView()
         
         let emitterLayer = CAEmitterLayer()
-        emitterLayer.emitterPosition = CGPoint(x: 60, y: 40)
+        emitterLayer.emitterPosition = CGPoint(x: smokeView.bounds.size.width / 2, y: 0)
         emitterLayer.emitterSize = CGSize(width: smokeView.bounds.size.width, height: 1)
         emitterLayer.emitterShape = .line
         emitterLayer.emitterCells = [createSmokeParticleCell()]
@@ -44,13 +44,13 @@ public struct IndianFlagSmokeView: UIViewRepresentable {
     private func createSmokeParticleCell() -> CAEmitterCell {
         let cell = CAEmitterCell()
         cell.birthRate = 200
-        cell.lifetime = 15
-        cell.velocity = 50
-        cell.velocityRange = 50
-        cell.emissionLongitude = .pi
-        cell.emissionRange = .pi / 4
-        cell.scale = 0.1
-        cell.scaleRange = 0.05
+              cell.lifetime = 15
+              cell.velocity = 50
+              cell.velocityRange = 50
+              cell.emissionLongitude = .pi
+              cell.emissionRange = .pi / 4
+              cell.scale = 0.1
+              cell.scaleRange = 0.05
         
         cell.color = particleColor.cgColor
         
@@ -66,6 +66,12 @@ public class SmokeModalViewController: UIViewController {
         
         view.backgroundColor = .clear
         
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.alignment = .center
+        stackView.spacing = 10
+        
         let saffronHostingController = UIHostingController(rootView: IndianFlagSmokeView(particleColor: .orange))
         let whiteHostingController = UIHostingController(rootView: IndianFlagSmokeView(particleColor: .white))
         let greenHostingController = UIHostingController(rootView: IndianFlagSmokeView(particleColor: .green))
@@ -74,17 +80,16 @@ public class SmokeModalViewController: UIViewController {
         addChild(whiteHostingController)
         addChild(greenHostingController)
         
-        view.addSubview(saffronHostingController.view)
-        view.addSubview(whiteHostingController.view)
-        view.addSubview(greenHostingController.view)
+        stackView.addArrangedSubview(saffronHostingController.view)
+        stackView.addArrangedSubview(whiteHostingController.view)
+        stackView.addArrangedSubview(greenHostingController.view)
         
         saffronHostingController.didMove(toParent: self)
         whiteHostingController.didMove(toParent: self)
         greenHostingController.didMove(toParent: self)
         
-        saffronHostingController.view.frame = view.bounds
-        whiteHostingController.view.frame = view.bounds
-        greenHostingController.view.frame = view.bounds
+        stackView.frame = view.bounds
+        view.addSubview(stackView)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             self.dismiss(animated: true, completion: nil)
@@ -99,3 +104,28 @@ public class SmokeEffectPresenter {
         viewController.present(smokeModalViewController, animated: true, completion: nil)
     }
 }
+
+
+
+#if DEBUG
+struct IndianFlagSmokeView_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            IndianFlagSmokeView(particleColor: .orange)
+                .previewDisplayName("Saffron Smoke")
+                .frame(width: 100, height: 400)
+                .background(Color.black)
+            
+            IndianFlagSmokeView(particleColor: .white)
+                .previewDisplayName("White Smoke")
+                .frame(width: 100, height: 400)
+                .background(Color.black)
+            
+            IndianFlagSmokeView(particleColor: .green)
+                .previewDisplayName("Green Smoke")
+                .frame(width: 100, height: 400)
+                .background(Color.black)
+        }
+    }
+}
+#endif
