@@ -10,14 +10,17 @@
 
 ## Animation Video 
 
-https://github.com/user-attachments/assets/68dde4cc-b957-450b-943c-082994788529
+
+https://github.com/user-attachments/assets/cd0e55e4-ac97-407b-9bf2-ff9a9b8813f3
+
 
 ## Screenshots 
 
-![Client App Animation Triggering Screen ](https://github.com/user-attachments/assets/dd34ae10-8fa4-432b-9977-9a48295c7364)
-
-![Swift Pacakge Animation Screenscreenshot](https://github.com/user-attachments/assets/6e7f8e1b-48b2-4e12-8eb8-d67949247dfc)
-
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/dd34ae10-8fa4-432b-9977-9a48295c7364" alt="Client App Animation Triggering Screen" width="45%" />
+  <span style="display:inline-block; width: 10px;"></span>
+  <img src="https://github.com/user-attachments/assets/6e7f8e1b-48b2-4e12-8eb8-d67949247dfc" alt="Swift Package Animation Screenshot" width="45%" />
+</p>
 
 ## Installation
 
