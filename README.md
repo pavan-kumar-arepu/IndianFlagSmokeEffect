@@ -8,6 +8,17 @@
 - Display the smoke effect in a modal view.
 - Easy integration with SwiftUI and UIKit.
 
+## Animation Video 
+
+https://github.com/user-attachments/assets/68dde4cc-b957-450b-943c-082994788529
+
+## Screenshots 
+
+![Client App Animation Triggering Screen ](https://github.com/user-attachments/assets/dd34ae10-8fa4-432b-9977-9a48295c7364)
+
+![Swift Pacakge Animation Screenscreenshot](https://github.com/user-attachments/assets/6e7f8e1b-48b2-4e12-8eb8-d67949247dfc)
+
+
 ## Installation
 
 ### Swift Package Manager
