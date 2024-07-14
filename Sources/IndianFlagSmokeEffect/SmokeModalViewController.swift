@@ -4,6 +4,7 @@
 //
 //  Created by Pavankumar Arepu on 13/07/24.
 //
+
 import UIKit
 import SwiftUI
 
@@ -13,6 +14,24 @@ internal class SmokeModalViewController: UIViewController {
         
         // Set the background color to black
         view.backgroundColor = .black
+        
+        // Add a close button to the top right corner of the view
+        let closeButton = UIButton(type: .system)
+        closeButton.setTitle("Close", for: .normal)
+        closeButton.setTitleColor(.white, for: .normal)
+        closeButton.backgroundColor = .systemBlue.withAlphaComponent(0.5)
+        closeButton.layer.cornerRadius = 8
+        closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(closeButton)
+        
+        // Set constraints for the close button
+        NSLayoutConstraint.activate([
+            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            closeButton.widthAnchor.constraint(equalToConstant: 60),
+            closeButton.heightAnchor.constraint(equalToConstant: 40)
+        ])
         
         // Create a stack view for the descriptions of the colors
         let descriptionStackView = UIStackView()
@@ -63,32 +82,13 @@ internal class SmokeModalViewController: UIViewController {
         NSLayoutConstraint.activate([
             descriptionStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             descriptionStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            descriptionStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            descriptionStackView.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 20),
             
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             stackView.topAnchor.constraint(equalTo: descriptionStackView.bottomAnchor, constant: 20),
             stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
-        
-        // Add a close button to the top right corner of the view
-        let closeButton = UIButton(type: .system)
-        closeButton.setTitle("Close", for: .normal)
-        closeButton.setTitleColor(.white, for: .normal)
-        closeButton.backgroundColor = .green.withAlphaComponent(0.5)
-        closeButton.layer.cornerRadius = 8
-        closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
-        closeButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(closeButton)
-        
-        // Set constraints for the close button
-        NSLayoutConstraint.activate([
-            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            closeButton.widthAnchor.constraint(equalToConstant: 60),
-            closeButton.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
     
@@ -109,3 +109,4 @@ internal class SmokeModalViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 }
+
